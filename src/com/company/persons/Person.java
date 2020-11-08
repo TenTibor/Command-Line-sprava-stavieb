@@ -1,9 +1,9 @@
-package com.company;
+package com.company.persons;
 
 public class Person {
-    String firstName;
-    String secondName;
-    String email;
+    private String firstName;
+    private String secondName;
+    private String email = "";
 
     public Person(String firstName, String secondName, String email) {
         this.firstName = firstName;
@@ -11,11 +11,16 @@ public class Person {
         this.email = email;
     }
 
+    public Person(String firstName, String secondName) {
+        this.firstName = firstName;
+        this.secondName = secondName;
+    }
+
     public String getName() {
         return this.firstName + " " + this.secondName;
     }
 
     public String getEmail() {
-        return email;
+        return email.length() > 0 ? email : "Email is not set";
     }
 }

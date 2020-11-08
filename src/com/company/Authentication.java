@@ -1,5 +1,9 @@
 package com.company;
 
+import com.company.persons.Employee;
+import com.company.persons.EmployeesList;
+import com.company.persons.Guest;
+
 public class Authentication {
     private Employee user = null;
     private Guest guest = null;
@@ -10,7 +14,7 @@ public class Authentication {
     }
 
     boolean checkPassword(String typedPassword, Employee employee) {
-        return typedPassword.equals(employee.password);
+        return typedPassword.equals(employee.getPassword());
     }
 
     void logAsGuest() {
@@ -22,7 +26,7 @@ public class Authentication {
         // TODO Prihlasenie. Uzivatel zada email, ten sa vyhlada ci existuje v zozname zamestanncov.
         //  Ak existuje, zistuje ci sa bude zhodovat heslo
         System.out.println("Successfully logged in.");
-        this.user = new Employee("Tibor", "Dulovec", "tibor@mail.com");
+        this.user = new Employee("Tibor", "Dulovec");
     }
 
     void logOut() {
