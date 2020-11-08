@@ -1,12 +1,13 @@
 package com.company.persons;
 
 public class Employee extends Person {
-    String password;
+    private String password;
     protected boolean editEmployees = false;
     protected boolean editBuildings = false;
 
-    public Employee(String firstName, String secondName, String email) {
+    public Employee(String firstName, String secondName, String email, String password) {
         super(firstName, secondName, email);
+        this.password = password;
     }
 
     public Employee(String firstName, String secondName) {

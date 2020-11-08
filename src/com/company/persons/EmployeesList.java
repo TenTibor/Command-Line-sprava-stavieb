@@ -6,6 +6,10 @@ import java.util.Scanner;
 public class EmployeesList {
     ArrayList<Employee> list = new ArrayList<>();
 
+    public ArrayList<Employee> getList() {
+        return list;
+    }
+
     public void addEmployee(Employee employee) {
         list.add(employee);
     }
@@ -18,7 +22,7 @@ public class EmployeesList {
         System.out.print("Email of new employee: ");
         String email = scanner.nextLine();
 
-        list.add(new Employee(name[0], name[1], email));
+        list.add(new Employee(name[0], name[1], email, "123456"));
         System.out.println(email + " was added");
     }
 

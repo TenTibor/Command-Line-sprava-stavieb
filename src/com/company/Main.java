@@ -13,15 +13,15 @@ public class Main {
         // employees
         EmployeesList employeesList = new EmployeesList();
 
-        Employee randomEmployee = new Boss("Tibor", "Dulovec", "tiborendo@mail.com");
+        Employee randomEmployee = new Boss("Tibor", "Dulovec", "b", "123456");
         employeesList.addEmployee(randomEmployee);
-        randomEmployee = new Employee("Ferko", "Trelko", "treler@mail.com");
+        randomEmployee = new Employee("Ferko", "Trelko", "e", "123456");
         employeesList.addEmployee(randomEmployee);
-        randomEmployee = new Employee("Nezmar", "Zmareny", "zmarendo@mail.com");
+        randomEmployee = new Employee("Nezmar", "Zmareny", "zmarendo@mail.com", "123456");
         employeesList.addEmployee(randomEmployee);
-        randomEmployee = new Employee("Trendo", "Drendo", "prendo@mail.com");
+        randomEmployee = new Employee("Trendo", "Drendo", "prendo@mail.com", "123456");
         employeesList.addEmployee(randomEmployee);
-        randomEmployee = new Employee("Velky", "Karez", "karez2@mail.com");
+        randomEmployee = new Employee("Velky", "Karez", "karez2@mail.com", "123456");
         employeesList.addEmployee(randomEmployee);
 
         // buildings
@@ -55,12 +55,13 @@ public class Main {
                     System.out.println("0: Exit\n1: Log out" +
                             (!_auth.isGuest() ? "\n2: See my profile" : "") +
                             (!_auth.isGuest() ? "\n3: See all employees" : "") +
-                            (!_auth.isGuest() ? "\n4: Add new employee" : ""));
+                            (!_auth.isGuest() && _auth.getUser().canEditEmployees() ? "\n4: Add new employee" : ""));
                     System.out.print("What you wanna do? ");
 
                 }
                 response = scanner.nextLine();
                 showMenu = false;
+                // For everybody
                 switch (response) {
                     // Show menu
                     case "m":
@@ -70,20 +71,30 @@ public class Main {
                     case "1":
                         _auth.logOut();
                         break;
-                    // Show profile of logged employees
-                    case "2":
-                        System.out.println("Your profile:");
-                        System.out.println(_auth.getUser().getName());
-                        System.out.println(_auth.getUser().getEmail());
-                        System.out.println("Press number to do action. (Press m to show menu)");
-                        break;
-                    // Show all employees
-                    case "3":
-                        employeesList.writeList();
-                        break;
-                    // Add employee
-                    case "4":
-                        employeesList.addEmployeeInterface();
+                    default:
+                        // For only employees
+                        if (!_auth.isGuest()) switch (response) {
+                            // Show profile of logged employees
+                            case "2":
+                                System.out.println("Your profile:");
+                                System.out.println(_auth.getUser().getName());
+                                System.out.println(_auth.getUser().getEmail());
+                                System.out.println("Press number to do action. (Press m to show menu)");
+                                break;
+                            // Show all employees
+                            case "3":
+                                employeesList.writeList();
+                                break;
+                            default:
+                                // Only for boss
+                                if (_auth.getUser().canEditEmployees()) switch (response) {
+                                    // Add employee
+                                    case "4":
+                                        employeesList.addEmployeeInterface();
+                                        break;
+                                }
+                                break;
+                        }
                         break;
                 }
             }

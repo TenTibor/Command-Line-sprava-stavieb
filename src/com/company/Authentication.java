@@ -5,10 +5,12 @@ import com.company.persons.Employee;
 import com.company.persons.EmployeesList;
 import com.company.persons.Guest;
 
+import java.util.Scanner;
+
 public class Authentication {
     private Employee user = null;
     private Guest guest = null;
-    EmployeesList employees;
+    private EmployeesList employees;
 
     public Authentication(EmployeesList employees) {
         this.employees = employees;
@@ -24,10 +26,37 @@ public class Authentication {
     }
 
     void logIn() {
-        // TODO Prihlasenie. Uzivatel zada email, ten sa vyhlada ci existuje v zozname zamestanncov.
-        //  Ak existuje, zistuje ci sa bude zhodovat heslo
+        System.out.println("Login with email: ");
+
+        Scanner scanner = new Scanner(System.in);
+        String loginEmail = scanner.nextLine();
+        Employee theEmployee = null;
+
+        // find  user
+        boolean userFound = false;
+        for (Employee employee : employees.getList()) {
+            if (employee.getEmail().equals(loginEmail)) {
+                theEmployee = employee;
+                userFound = true;
+                break;
+            }
+        }
+        if (!userFound) {
+            System.out.println("User wasn't found");
+            return;
+        }
+
+        // check password
+        System.out.println("Password: ");
+        String input = "";
+        while (!(input = scanner.nextLine()).equals("0") && !checkPassword(input, theEmployee)) {
+            System.out.println("Bad password, try again (or type 0 to cancel): ");
+        }
+
+        if (input.equals("0")) return;
+
         System.out.println("Successfully logged in.");
-        this.user = new Boss("Tibor", "Dulovec", "tibor@mail.com");
+        this.user = theEmployee;
     }
 
     void logOut() {
