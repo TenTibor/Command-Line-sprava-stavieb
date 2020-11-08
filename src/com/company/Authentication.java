@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.persons.Boss;
 import com.company.persons.Employee;
 import com.company.persons.EmployeesList;
 import com.company.persons.Guest;
@@ -26,7 +27,7 @@ public class Authentication {
         // TODO Prihlasenie. Uzivatel zada email, ten sa vyhlada ci existuje v zozname zamestanncov.
         //  Ak existuje, zistuje ci sa bude zhodovat heslo
         System.out.println("Successfully logged in.");
-        this.user = new Employee("Tibor", "Dulovec");
+        this.user = new Boss("Tibor", "Dulovec", "tibor@mail.com");
     }
 
     void logOut() {

@@ -20,7 +20,14 @@ public class Person {
         return this.firstName + " " + this.secondName;
     }
 
+    public boolean isEmail() {
+        return !email.isEmpty();
+    }
+
     public String getEmail() {
-        return email.length() > 0 ? email : "Email is not set";
+        return isEmail() ? email : "Email is not set";
+    }
+    public String getPerson() {
+        return this.firstName + " " + this.secondName + (isEmail() ? ", " + email : "");
     }
 }
