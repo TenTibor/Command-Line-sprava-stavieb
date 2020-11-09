@@ -17,12 +17,15 @@ public class EmployeesList {
     public void addEmployeeInterface() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Name of new employee: ");
-        String[] name = scanner.nextLine().split(" ");;
+        String[] name = scanner.nextLine().split(" ");
 
         System.out.print("Email of new employee: ");
         String email = scanner.nextLine();
 
-        list.add(new Employee(name[0], name[1], email, "123456"));
+        System.out.print("Password for new employee: ");
+        String password = scanner.nextLine();
+
+        list.add(new Employee(name[0], name[1], email, password));
         System.out.println(email + " was added");
     }
 

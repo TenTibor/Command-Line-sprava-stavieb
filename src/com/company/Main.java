@@ -31,7 +31,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Authentication _auth = new Authentication(employeesList);
         String response = "";
-        System.out.println("===================\n Welcome to system!\n===================");
+        System.out.println("===================\nWelcome to system!\n===================");
         boolean showMenu = true;
         while (!response.equals("0")) {
             if (!_auth.isLoggedIn()) {
@@ -61,6 +61,7 @@ public class Main {
                 }
                 response = scanner.nextLine();
                 showMenu = false;
+                
                 // For everybody
                 switch (response) {
                     // Show menu
