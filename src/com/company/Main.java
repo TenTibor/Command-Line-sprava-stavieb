@@ -13,9 +13,9 @@ public class Main {
         // employees
         EmployeesList employeesList = new EmployeesList();
 
-        Employee randomEmployee = new Boss("Tibor", "Dulovec", "b", "123456");
+        Employee randomEmployee = new Boss("Tibor", "Dulovec", "tibor@mail.com", "123456");
         employeesList.addEmployee(randomEmployee);
-        randomEmployee = new Employee("Ferko", "Trelko", "e", "123456");
+        randomEmployee = new Employee("Ferko", "Trelko", "empl@mail.com", "123456");
         employeesList.addEmployee(randomEmployee);
         randomEmployee = new Employee("Nezmar", "Zmareny", "zmarendo@mail.com", "123456");
         employeesList.addEmployee(randomEmployee);

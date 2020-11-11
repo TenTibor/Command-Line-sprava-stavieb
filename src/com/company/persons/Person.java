@@ -27,7 +27,8 @@ public class Person {
     public String getEmail() {
         return isEmail() ? email : "Email is not set";
     }
+
     public String getPerson() {
-        return this.firstName + " " + this.secondName + (isEmail() ? ", " + email : "");
+        return getName() + (isEmail() ? ", " + email : "");
     }
 }

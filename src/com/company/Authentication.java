@@ -1,6 +1,5 @@
 package com.company;
 
-import com.company.persons.Boss;
 import com.company.persons.Employee;
 import com.company.persons.EmployeesList;
 import com.company.persons.Guest;
