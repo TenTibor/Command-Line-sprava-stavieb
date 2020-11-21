@@ -1,9 +1,11 @@
 package com.company.persons;
 
+import com.company.listInterface;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class EmployeesList {
+public class EmployeesList implements listInterface {
     ArrayList<Employee> list = new ArrayList<>();
 
     public ArrayList<Employee> getList() {

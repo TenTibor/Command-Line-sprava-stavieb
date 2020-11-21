@@ -1,6 +1,6 @@
 package com.company.persons;
 
-public class Person {
+public class Person extends Human{
     private String firstName;
     private String secondName;
     private String email = "";
