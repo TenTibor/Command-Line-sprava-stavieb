@@ -15,12 +15,23 @@ public class CustomersList implements listInterface {
 
     public void writeList() {
         System.out.println("List of all employees:");
+        int index = 1;
         for (Customer item : list) {
-            System.out.println(item.getPerson());
+            System.out.println((index++) + ": " + item.getPerson());
         }
     }
 
     public void getList() {
+    }
+
+    public Customer getCustomer(String sIndex) {
+        int index;
+        try {
+            index = Integer.parseInt(sIndex);
+        } catch (NumberFormatException ex) { // handle your exception
+            return null;
+        }
+        return list.get(index);
     }
 
     public void addCustomerInterface() {

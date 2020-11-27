@@ -59,11 +59,12 @@ public class Main {
                 if (showMenu) {
                     System.out.println("================");
                     System.out.println("0: Exit\n1: Log out" +
-                            (!_auth.isGuest() ? "\n2: See my profile" : "") +
-                            (!_auth.isGuest() ? "\n3: See all employees" : "") +
+                            (!_auth.isGuest() ? "\n2: Show my profile" : "") +
+                            (!_auth.isGuest() ? "\n3: Show all employees" : "") +
                             (!_auth.isGuest() && _auth.getUser().canEditEmployees() ? "\n4: Add new employee" : "") +
-                            (!_auth.isGuest() ? "\n5: See all customers" : "") +
-                            (!_auth.isGuest() ? "\n6: Add new customer" : "")
+                            (!_auth.isGuest() ? "\n5: Show all customers" : "") +
+                            (!_auth.isGuest() ? "\n6: Add new customer" : "") +
+                            (!_auth.isGuest() ? "\n7: Show customer" : "")
                     );
                     System.out.print("What you wanna do? ");
 
@@ -102,6 +103,18 @@ public class Main {
                             // Add new customer
                             case "6":
                                 customerList.addCustomerInterface();
+                                break;
+                            // Show customer
+                            case "7":
+                                System.out.print("Type index of customer: ");
+                                Customer thisCustomer = customerList.getCustomer(scanner.nextLine());
+                                if (thisCustomer == null) {
+                                    System.out.print("You wrote bad index!");
+                                    break;
+                                }
+                                System.out.println("\n========"+thisCustomer.getName()+"========");
+                                System.out.println("Email: " + thisCustomer.getEmail());
+                                System.out.println("========"+thisCustomer.getName()+"========");
                                 break;
                             default:
                                 // Only for boss
