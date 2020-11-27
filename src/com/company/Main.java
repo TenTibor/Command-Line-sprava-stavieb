@@ -1,9 +1,11 @@
 package com.company;
 
 import com.company.buildings.BuildingsList;
-import com.company.persons.Boss;
-import com.company.persons.Employee;
-import com.company.persons.EmployeesList;
+import com.company.customers.Customer;
+import com.company.customers.CustomersList;
+import com.company.employees.Boss;
+import com.company.employees.Employee;
+import com.company.employees.EmployeesList;
 
 import java.util.Scanner;
 
@@ -14,7 +16,7 @@ public class Main {
         EmployeesList employeesList = new EmployeesList();
 
         // UPCASTING is here
-        Employee randomEmployee = new Boss("Tibor", "Dulovec", "tibor@mail.com", "123456");
+        Employee randomEmployee = new Boss("Tibor", "Dulovec", "1", "1");
         employeesList.addEmployee(randomEmployee);
         randomEmployee = new Employee("Ferko", "Trelko", "empl@mail.com", "123456");
         employeesList.addEmployee(randomEmployee);
@@ -22,11 +24,14 @@ public class Main {
         employeesList.addEmployee(randomEmployee);
         randomEmployee = new Employee("Trendo", "Drendo", "prendo@mail.com", "123456");
         employeesList.addEmployee(randomEmployee);
-        randomEmployee = new Employee("Velky", "Karez", "karez2@mail.com", "123456");
-        employeesList.addEmployee(randomEmployee);
+        employeesList.addEmployee(new Employee("Velky", "Frajer", "frajer@mail.com", "123456"));
 
         // buildings
-        BuildingsList buildingsList = new BuildingsList();
+        CustomersList customerList = new CustomersList();
+        customerList.addCustomer(new Customer("Fero", "Velky", "maik23@mail.com"));
+        customerList.addCustomer(new Customer("Jano", "Maly", "mas321@mail.com"));
+        customerList.addCustomer(new Customer("Peto", "Siroky", "mdsa23@mail.com"));
+        customerList.addCustomer(new Customer("Pato", "Tenky", "mh31@mail.com"));
 
         // start interface
         Scanner scanner = new Scanner(System.in);
@@ -56,13 +61,16 @@ public class Main {
                     System.out.println("0: Exit\n1: Log out" +
                             (!_auth.isGuest() ? "\n2: See my profile" : "") +
                             (!_auth.isGuest() ? "\n3: See all employees" : "") +
-                            (!_auth.isGuest() && _auth.getUser().canEditEmployees() ? "\n4: Add new employee" : ""));
+                            (!_auth.isGuest() && _auth.getUser().canEditEmployees() ? "\n4: Add new employee" : "") +
+                            (!_auth.isGuest() ? "\n5: See all customers" : "") +
+                            (!_auth.isGuest() ? "\n6: Add new customer" : "")
+                    );
                     System.out.print("What you wanna do? ");
 
                 }
                 response = scanner.nextLine();
                 showMenu = false;
-                
+
                 // For everybody
                 switch (response) {
                     // Show menu
@@ -86,6 +94,14 @@ public class Main {
                             // Show all employees
                             case "3":
                                 employeesList.writeList();
+                                break;
+                            // Show all customers
+                            case "5":
+                                customerList.writeList();
+                                break;
+                            // Add new customer
+                            case "6":
+                                customerList.addCustomerInterface();
                                 break;
                             default:
                                 // Only for boss

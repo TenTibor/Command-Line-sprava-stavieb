@@ -1,6 +1,6 @@
 package com.company.buildings;
 
-import com.company.persons.Customer;
+import com.company.customers.Customer;
 import com.company.Note;
 
 public class Building {

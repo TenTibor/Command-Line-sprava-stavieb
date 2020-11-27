@@ -16,4 +16,8 @@ public class BuildingsList implements listInterface {
 
     public void getList() {
     }
+
+    public void addItem() {
+
+    }
 }

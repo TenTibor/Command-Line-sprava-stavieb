@@ -1,4 +1,4 @@
-package com.company.persons;
+package com.company.employees;
 
 import com.company.listInterface;
 
