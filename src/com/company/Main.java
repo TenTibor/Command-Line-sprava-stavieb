@@ -107,14 +107,39 @@ public class Main {
                             // Show customer
                             case "7":
                                 System.out.print("Type index of customer: ");
-                                Customer thisCustomer = customerList.getCustomer(scanner.nextLine());
+                                String sIndex = scanner.nextLine();
+                                Customer thisCustomer = customerList.getCustomer(sIndex);
+
+                                // Check if index was found
                                 if (thisCustomer == null) {
                                     System.out.print("You wrote bad index!");
                                     break;
                                 }
-                                System.out.println("\n========"+thisCustomer.getName()+"========");
-                                System.out.println("Email: " + thisCustomer.getEmail());
-                                System.out.println("========"+thisCustomer.getName()+"========");
+
+                                // Show card
+                                System.out.println("\n==========" + thisCustomer.getName() + "==========");
+                                System.out.println(" Email: " + thisCustomer.getEmail());
+
+                                // just fancy end of card
+                                for (int i = -20; i < thisCustomer.getName().length(); i++) {
+                                    System.out.print("=");
+                                }
+                                System.out.println("");
+
+                                // Menu for customer
+                                String customerResponse = "";
+                                while (!customerResponse.equals("0")) {
+                                    System.out.println("[1: Add building] [2: Remove customer] [0: Exit]");
+                                    customerResponse = scanner.nextLine();
+                                    switch (customerResponse) {
+                                        case "1":
+                                            break;
+                                        case "2":
+                                            customerList.removeCustomer(Integer.parseInt(sIndex) - 1);
+                                            System.out.println("Customer was removed!");
+                                            break;
+                                    }
+                                }
                                 break;
                             default:
                                 // Only for boss

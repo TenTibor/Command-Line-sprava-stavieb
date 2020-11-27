@@ -12,6 +12,9 @@ public class CustomersList implements listInterface {
     public void addCustomer(Customer customer) {
         list.add(customer);
     }
+    public void removeCustomer(int index) {
+        list.remove(index);
+    }
 
     public void writeList() {
         System.out.println("List of all employees:");
@@ -27,11 +30,15 @@ public class CustomersList implements listInterface {
     public Customer getCustomer(String sIndex) {
         int index;
         try {
-            index = Integer.parseInt(sIndex);
+            index = Integer.parseInt(sIndex) - 1;
         } catch (NumberFormatException ex) { // handle your exception
             return null;
         }
-        return list.get(index);
+        try {
+            return list.get(index);
+        } catch (IndexOutOfBoundsException ex) { // handle your exception
+            return null;
+        }
     }
 
     public void addCustomerInterface() {
