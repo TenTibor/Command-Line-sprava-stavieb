@@ -13,6 +13,7 @@ public class Main {
         // employees
         EmployeesList employeesList = new EmployeesList();
 
+        // UPCASTING is here
         Employee randomEmployee = new Boss("Tibor", "Dulovec", "tibor@mail.com", "123456");
         employeesList.addEmployee(randomEmployee);
         randomEmployee = new Employee("Ferko", "Trelko", "empl@mail.com", "123456");
