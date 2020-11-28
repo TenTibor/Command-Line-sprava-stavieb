@@ -4,14 +4,13 @@ import com.company.customers.Customer;
 import com.company.Note;
 
 public class Building {
-    Customer customer;
     String status;
-    String town;
+    String place;
     public Note note = new Note();
 
-    public Building(Customer customer) {
-        this.customer = customer;
+    public Building(String place) {
         status = "In progress";
+        this.place = place;
     }
 
     public void finish() {
@@ -22,4 +21,19 @@ public class Building {
         this.status = "Canceled";
     }
 
+    public String getRecord() {
+        return "[" + status + "] " + place;
+    }
+
+    public void showCard() {
+        System.out.println("\n=============" + status + "=============");
+        System.out.println(" Place: " + place);
+
+        // just fancy end of card
+        for (int i = -26; i < status.length(); i++) {
+            System.out.print("=");
+        }
+        System.out.println("");
+        System.out.println("[R: Remove building] " + (this.status.equals("In progress") ? " [!F: Finish] [!C: Cancel]" : "") + "\n[N: Edit note] [0:Exit]");
+    }
 }

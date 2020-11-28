@@ -12,12 +12,13 @@ public class CustomersList implements listInterface {
     public void addCustomer(Customer customer) {
         list.add(customer);
     }
-    public void removeCustomer(int index) {
+
+    public void removeItem(int index) {
         list.remove(index);
     }
 
     public void writeList() {
-        System.out.println("List of all employees:");
+        System.out.println("=========================\nList of all customers:");
         int index = 1;
         for (Customer item : list) {
             System.out.println((index++) + ": " + item.getPerson());
@@ -43,7 +44,7 @@ public class CustomersList implements listInterface {
 
     public void addCustomerInterface() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Name of new customer: ");
+        System.out.print("Name of new customer(two words): ");
         String[] name = scanner.nextLine().split(" ");
 
         System.out.print("Email of new employee: ");

@@ -1,6 +1,6 @@
 package com.company;
 
-import com.company.buildings.BuildingsList;
+import com.company.buildings.Building;
 import com.company.customers.Customer;
 import com.company.customers.CustomersList;
 import com.company.employees.Boss;
@@ -112,32 +112,63 @@ public class Main {
 
                                 // Check if index was found
                                 if (thisCustomer == null) {
-                                    System.out.print("You wrote bad index!");
+                                    System.out.println("You wrote bad index!");
+                                    showMenu = true;
                                     break;
                                 }
-
-                                // Show card
-                                System.out.println("\n==========" + thisCustomer.getName() + "==========");
-                                System.out.println(" Email: " + thisCustomer.getEmail());
-
-                                // just fancy end of card
-                                for (int i = -20; i < thisCustomer.getName().length(); i++) {
-                                    System.out.print("=");
-                                }
-                                System.out.println("");
 
                                 // Menu for customer
                                 String customerResponse = "";
                                 while (!customerResponse.equals("0")) {
-                                    System.out.println("[1: Add building] [2: Remove customer] [0: Exit]");
+                                    // Show card
+                                    thisCustomer.showCard();
                                     customerResponse = scanner.nextLine();
-                                    switch (customerResponse) {
-                                        case "1":
+
+                                    // If input is number or character
+                                    try {
+                                        int indexBuilding = Integer.parseInt(customerResponse);
+                                        // Show building
+                                        Building thisBuilding = thisCustomer.getBuilding(indexBuilding);
+
+                                        // Check if index was found
+                                        if (thisBuilding == null) {
+                                            System.out.println("You wrote bad index!");
+                                            showMenu = true;
                                             break;
-                                        case "2":
-                                            customerList.removeCustomer(Integer.parseInt(sIndex) - 1);
-                                            System.out.println("Customer was removed!");
-                                            break;
+                                        }
+
+
+                                        // Menu for building
+                                        String buildingResponse = "";
+                                        while (!buildingResponse.equals("0")) {
+                                            // Show card
+                                            thisBuilding.showCard();
+                                            buildingResponse = scanner.nextLine();
+
+                                            switch (buildingResponse.toUpperCase()) {
+                                                case "R":
+                                                    thisCustomer.removeBuilding(indexBuilding - 1);
+                                                    System.out.println("Building was removed!");
+                                                    buildingResponse = "0";
+                                                    break;
+                                                case "F":
+                                                    break;
+                                                case "C":
+                                                    break;
+                                            }
+                                        }
+                                    } catch (NumberFormatException e) {
+                                        switch (customerResponse.toUpperCase()) {
+                                            case "A":
+                                                thisCustomer.newBuilding();
+                                                break;
+                                            case "R":
+                                                customerList.removeItem(Integer.parseInt(sIndex) - 1);
+                                                System.out.println("Customer was removed!");
+                                                customerResponse = "0";
+                                                showMenu = true;
+                                                break;
+                                        }
                                     }
                                 }
                                 break;

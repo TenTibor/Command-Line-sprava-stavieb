@@ -31,8 +31,12 @@ public class EmployeesList implements listInterface {
         System.out.println(email + " was added");
     }
 
+    public void removeItem(int index) {
+        list.remove(index);
+    }
+
     public void writeList() {
-        System.out.println("List of all employees:");
+        System.out.println("=========================\nList of all employees:");
         for (Employee employee : list) {
             System.out.println(employee.getPerson());
         }
