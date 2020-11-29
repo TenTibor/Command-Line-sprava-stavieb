@@ -28,12 +28,13 @@ public class Building {
     public void showCard() {
         System.out.println("\n=============" + status + "=============");
         System.out.println(" Place: " + place);
+        if (!note.isEmpty()) System.out.println(" Note: " + note.getText());
 
         // just fancy end of card
         for (int i = -26; i < status.length(); i++) {
             System.out.print("=");
         }
         System.out.println("");
-        System.out.println("[R: Remove building] " + (this.status.equals("In progress") ? " [F: Finish] [C: Cancel]" : "") + "\n[N: Edit note] [0:Exit]");
+        System.out.println("[R: Remove building] " + (this.status.equals("In progress") ? " [F: Finish] [C: Cancel]" : "") + "\n[N: " + (note.isEmpty() ? "Add" : "Change") + " note] [RN: Remove note] [0:Exit]");
     }
 }

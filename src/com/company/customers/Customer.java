@@ -42,7 +42,7 @@ public class Customer extends Person {
             System.out.print("=");
         }
         System.out.println("");
-        System.out.println("[A: Add building] [R: Remove customer] [Any index of building] \n[N: Change note] [RN: Remove note] [0: Exit]");
+        System.out.println("[A: Add building] [R: Remove customer] [Index of building] \n[N: " + (note.isEmpty() ? "Add" : "Change") + " note] [RN: Remove note] [0: Exit]");
     }
 
     public Building getBuilding(int index) {

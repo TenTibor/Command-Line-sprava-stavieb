@@ -153,9 +153,19 @@ public class Main {
                                                     break;
                                                 case "F":
                                                     thisBuilding.finish();
+                                                    buildingResponse = "0";
                                                     break;
                                                 case "C":
                                                     thisBuilding.cancel();
+                                                    buildingResponse = "0";
+                                                    break;
+                                                case "N":
+                                                    System.out.print("New note: ");
+                                                    thisBuilding.note.editText(scanner.nextLine());
+                                                    break;
+                                                case "RN":
+                                                    thisBuilding.note.removeNote();
+                                                    System.out.println("Note was removed");
                                                     break;
                                             }
                                         }
