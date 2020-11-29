@@ -170,6 +170,14 @@ public class Main {
                                                 customerResponse = "0";
                                                 showMenu = true;
                                                 break;
+                                            case "N":
+                                                System.out.print("New note: ");
+                                                thisCustomer.note.editText(scanner.nextLine());
+                                                break;
+                                            case "RN":
+                                                thisCustomer.note.removeNote();
+                                                System.out.println("Note was removed");
+                                                break;
                                         }
                                     }
                                 }

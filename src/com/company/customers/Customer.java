@@ -17,9 +17,7 @@ public class Customer extends Person {
     }
 
     public void writeBuildingsList() {
-        if (buildings.getSize() == 0)
-            System.out.println(" None buildings :(");
-        else
+        if (buildings.getSize() > 0)
             buildings.writeList();
     }
 
@@ -34,6 +32,7 @@ public class Customer extends Person {
     public void showCard() {
         System.out.println("\n=============" + this.getName() + "=============");
         System.out.println(" Email: " + this.getEmail());
+        if (!note.isEmpty()) System.out.println(" Note: " + note.getText());
 
         //  Building of user
         this.writeBuildingsList();
@@ -43,7 +42,7 @@ public class Customer extends Person {
             System.out.print("=");
         }
         System.out.println("");
-        System.out.println("[A: Add building] [R: Remove customer] [Any index of building] \n[N: Edit note] [0: Exit]");
+        System.out.println("[A: Add building] [R: Remove customer] [Any index of building] \n[N: Change note] [RN: Remove note] [0: Exit]");
     }
 
     public Building getBuilding(int index) {

@@ -2,13 +2,21 @@ package com.company;
 
 // Note about building or customer from employees
 public class Note {
-    String text = null;
+    String text = "";
 
-    public void editNote(String newNote) {
+    public void editText(String newNote) {
         this.text = newNote;
     }
 
     public void removeNote() {
-        this.text = null;
+        this.text = "";
+    }
+
+    public boolean isEmpty() {
+        return text.isEmpty();
+    }
+
+    public String getText() {
+        return text;
     }
 }

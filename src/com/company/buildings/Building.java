@@ -34,6 +34,6 @@ public class Building {
             System.out.print("=");
         }
         System.out.println("");
-        System.out.println("[R: Remove building] " + (this.status.equals("In progress") ? " [!F: Finish] [!C: Cancel]" : "") + "\n[N: Edit note] [0:Exit]");
+        System.out.println("[R: Remove building] " + (this.status.equals("In progress") ? " [F: Finish] [C: Cancel]" : "") + "\n[N: Edit note] [0:Exit]");
     }
 }
