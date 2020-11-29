@@ -25,7 +25,8 @@ public class CustomersList implements listInterface {
         }
     }
 
-    public void getList() {
+    public ArrayList<Customer> getList() {
+        return list;
     }
 
     public Customer getCustomer(String sIndex) {

@@ -152,8 +152,10 @@ public class Main {
                                                     buildingResponse = "0";
                                                     break;
                                                 case "F":
+                                                    thisBuilding.finish();
                                                     break;
                                                 case "C":
+                                                    thisBuilding.cancel();
                                                     break;
                                             }
                                         }
