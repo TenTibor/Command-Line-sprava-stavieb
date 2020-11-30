@@ -143,6 +143,10 @@ public class Main {
                                             thisBuilding.cancel();
                                             buildingResponse = "0";
                                             break;
+                                        case "W":
+                                            System.out.print("Name of new worker: ");
+                                            thisBuilding.addWorker(scanner.nextLine());
+                                            break;
                                         case "N":
                                             System.out.print("New note: ");
                                             thisBuilding.note.editText(scanner.nextLine());

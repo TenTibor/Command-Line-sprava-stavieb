@@ -2,15 +2,23 @@ package com.company.buildings;
 
 import com.company.customers.Customer;
 import com.company.Note;
+import com.company.employees.Employee;
+
+import java.util.ArrayList;
 
 public class Building {
     String status;
     String place;
     public Note note = new Note();
+    public ArrayList<String> workers = new ArrayList<>();
 
     public Building(String place) {
         status = "In progress";
         this.place = place;
+    }
+
+    public void addWorker(String name) {
+        workers.add(name);
     }
 
     public void finish() {
@@ -29,12 +37,18 @@ public class Building {
         System.out.println("\n=============" + status + "=============");
         System.out.println(" Place: " + place);
         if (!note.isEmpty()) System.out.println(" Note: " + note.getText());
+        if (!workers.isEmpty()) {
+            System.out.println(" Workers: ");
+            for (String worker : workers) {
+                System.out.println("  " + worker);
+            }
+        }
 
         // just fancy end of card
         for (int i = -26; i < status.length(); i++) {
             System.out.print("=");
         }
         System.out.println("");
-        System.out.println("[R: Remove building] " + (this.status.equals("In progress") ? " [F: Finish] [C: Cancel]" : "") + "\n[N: " + (note.isEmpty() ? "Add" : "Change") + " note] [RN: Remove note] [0:Exit]");
+        System.out.println("[R: Remove building] " + (this.status.equals("In progress") ? " [F: Finish] [C: Cancel]" : "") + "\n[W: Add worker] [N: " + (note.isEmpty() ? "Add" : "Change") + " note] [RN: Remove note] [0:Exit]");
     }
 }

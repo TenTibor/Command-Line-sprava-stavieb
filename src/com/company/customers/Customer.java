@@ -49,7 +49,7 @@ public class Customer extends Person {
     public Building getBuilding(int index) {
         try {
             return buildings.getItem(index - 1);
-        } catch (IndexOutOfBoundsException ex) { // handle your exception
+        } catch (IndexOutOfBoundsException ex) {
             return null;
         }
     }
