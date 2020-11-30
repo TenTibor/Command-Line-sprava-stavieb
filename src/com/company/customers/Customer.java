@@ -29,7 +29,7 @@ public class Customer extends Person {
         System.out.println("Building was added");
     }
 
-    public void showCard() {
+    public void showCard(boolean havePermissions) {
         System.out.println("\n=============" + this.getName() + "=============");
         System.out.println(" Email: " + this.getEmail());
         if (!note.isEmpty()) System.out.println(" Note: " + note.getText());
@@ -42,7 +42,8 @@ public class Customer extends Person {
             System.out.print("=");
         }
         System.out.println("");
-        System.out.println("[A: Add building] [R: Remove customer] [Index of building] \n[N: " + (note.isEmpty() ? "Add" : "Change") + " note] [RN: Remove note] [0: Exit]");
+        if (havePermissions)
+            System.out.println("[A: Add building] [R: Remove customer] [Index of building] \n[N: " + (note.isEmpty() ? "Add" : "Change") + " note] [RN: Remove note] [0: Exit]");
     }
 
     public Building getBuilding(int index) {

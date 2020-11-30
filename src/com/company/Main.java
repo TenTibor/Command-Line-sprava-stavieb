@@ -18,6 +18,8 @@ public class Main {
         // UPCASTING is here
         Employee randomEmployee = new Boss("Tibor", "Dulovec", "1", "1");
         employeesList.addEmployee(randomEmployee);
+        randomEmployee = new Employee("Tibor", "Dulovec", "2", "2");
+        employeesList.addEmployee(randomEmployee);
         randomEmployee = new Employee("Ferko", "Trelko", "empl@mail.com", "123456");
         employeesList.addEmployee(randomEmployee);
         randomEmployee = new Employee("Nezmar", "Zmareny", "zmarendo@mail.com", "123456");
@@ -62,9 +64,9 @@ public class Main {
                             (!_auth.isGuest() ? "\n2: Show my profile" : "") +
                             (!_auth.isGuest() ? "\n3: Show all employees" : "") +
                             (!_auth.isGuest() && _auth.getUser().canEditEmployees() ? "\n4: Add new employee" : "") +
-                            (!_auth.isGuest() ? "\n5: Show all customers" : "") +
+                            ("\n5: Show all customers") +
                             (!_auth.isGuest() ? "\n6: Add new customer" : "") +
-                            (!_auth.isGuest() ? "\n7: Show customer" : "")
+                            ("\n7: Show customer")
                     );
                     System.out.print("What you wanna do? ");
 
@@ -82,6 +84,99 @@ public class Main {
                     case "1":
                         _auth.logOut();
                         break;
+                    // Show all customers
+                    case "5":
+                        customerList.writeList();
+                        break;
+                    // Show customer
+                    case "7":
+                        System.out.print("Type index of customer: ");
+                        String sIndex = scanner.nextLine();
+                        Customer thisCustomer = customerList.getCustomer(sIndex);
+
+                        // Check if index was found
+                        if (thisCustomer == null) {
+                            System.out.println("You wrote bad index!");
+                            showMenu = true;
+                            break;
+                        }
+
+                        // Menu for customer
+                        String customerResponse = "";
+                        if (!_auth.isGuest()) while (!customerResponse.equals("0")) {
+                            // Show card
+                            thisCustomer.showCard(true);
+                            customerResponse = scanner.nextLine();
+
+                            // If input is number or character
+                            try {
+                                int indexBuilding = Integer.parseInt(customerResponse);
+                                // Show building
+                                Building thisBuilding = thisCustomer.getBuilding(indexBuilding);
+
+                                // Check if index was found
+                                if (thisBuilding == null) {
+                                    System.out.println("You wrote bad index!");
+                                    showMenu = true;
+                                    break;
+                                }
+
+
+                                // Menu for building
+                                String buildingResponse = "";
+                                while (!buildingResponse.equals("0")) {
+                                    // Show card
+                                    thisBuilding.showCard();
+                                    buildingResponse = scanner.nextLine();
+
+                                    switch (buildingResponse.toUpperCase()) {
+                                        case "R":
+                                            thisCustomer.removeBuilding(indexBuilding - 1);
+                                            System.out.println("Building was removed!");
+                                            buildingResponse = "0";
+                                            break;
+                                        case "F":
+                                            thisBuilding.finish();
+                                            buildingResponse = "0";
+                                            break;
+                                        case "C":
+                                            thisBuilding.cancel();
+                                            buildingResponse = "0";
+                                            break;
+                                        case "N":
+                                            System.out.print("New note: ");
+                                            thisBuilding.note.editText(scanner.nextLine());
+                                            break;
+                                        case "RN":
+                                            thisBuilding.note.removeNote();
+                                            System.out.println("Note was removed");
+                                            break;
+                                    }
+                                }
+                            } catch (NumberFormatException e) {
+                                switch (customerResponse.toUpperCase()) {
+                                    case "A":
+                                        thisCustomer.newBuilding();
+                                        break;
+                                    case "R":
+                                        customerList.removeItem(Integer.parseInt(sIndex) - 1);
+                                        System.out.println("Customer was removed!");
+                                        customerResponse = "0";
+                                        showMenu = true;
+                                        break;
+                                    case "N":
+                                        System.out.print("New note: ");
+                                        thisCustomer.note.editText(scanner.nextLine());
+                                        break;
+                                    case "RN":
+                                        thisCustomer.note.removeNote();
+                                        System.out.println("Note was removed");
+                                        break;
+                                }
+                            }
+                        }
+                        else thisCustomer.showCard(false);
+                        break;
                     default:
                         // For only employees
                         if (!_auth.isGuest()) switch (response) {
@@ -96,101 +191,10 @@ public class Main {
                             case "3":
                                 employeesList.writeList();
                                 break;
-                            // Show all customers
-                            case "5":
-                                customerList.writeList();
-                                break;
+
                             // Add new customer
                             case "6":
                                 customerList.addCustomerInterface();
-                                break;
-                            // Show customer
-                            case "7":
-                                System.out.print("Type index of customer: ");
-                                String sIndex = scanner.nextLine();
-                                Customer thisCustomer = customerList.getCustomer(sIndex);
-
-                                // Check if index was found
-                                if (thisCustomer == null) {
-                                    System.out.println("You wrote bad index!");
-                                    showMenu = true;
-                                    break;
-                                }
-
-                                // Menu for customer
-                                String customerResponse = "";
-                                while (!customerResponse.equals("0")) {
-                                    // Show card
-                                    thisCustomer.showCard();
-                                    customerResponse = scanner.nextLine();
-
-                                    // If input is number or character
-                                    try {
-                                        int indexBuilding = Integer.parseInt(customerResponse);
-                                        // Show building
-                                        Building thisBuilding = thisCustomer.getBuilding(indexBuilding);
-
-                                        // Check if index was found
-                                        if (thisBuilding == null) {
-                                            System.out.println("You wrote bad index!");
-                                            showMenu = true;
-                                            break;
-                                        }
-
-
-                                        // Menu for building
-                                        String buildingResponse = "";
-                                        while (!buildingResponse.equals("0")) {
-                                            // Show card
-                                            thisBuilding.showCard();
-                                            buildingResponse = scanner.nextLine();
-
-                                            switch (buildingResponse.toUpperCase()) {
-                                                case "R":
-                                                    thisCustomer.removeBuilding(indexBuilding - 1);
-                                                    System.out.println("Building was removed!");
-                                                    buildingResponse = "0";
-                                                    break;
-                                                case "F":
-                                                    thisBuilding.finish();
-                                                    buildingResponse = "0";
-                                                    break;
-                                                case "C":
-                                                    thisBuilding.cancel();
-                                                    buildingResponse = "0";
-                                                    break;
-                                                case "N":
-                                                    System.out.print("New note: ");
-                                                    thisBuilding.note.editText(scanner.nextLine());
-                                                    break;
-                                                case "RN":
-                                                    thisBuilding.note.removeNote();
-                                                    System.out.println("Note was removed");
-                                                    break;
-                                            }
-                                        }
-                                    } catch (NumberFormatException e) {
-                                        switch (customerResponse.toUpperCase()) {
-                                            case "A":
-                                                thisCustomer.newBuilding();
-                                                break;
-                                            case "R":
-                                                customerList.removeItem(Integer.parseInt(sIndex) - 1);
-                                                System.out.println("Customer was removed!");
-                                                customerResponse = "0";
-                                                showMenu = true;
-                                                break;
-                                            case "N":
-                                                System.out.print("New note: ");
-                                                thisCustomer.note.editText(scanner.nextLine());
-                                                break;
-                                            case "RN":
-                                                thisCustomer.note.removeNote();
-                                                System.out.println("Note was removed");
-                                                break;
-                                        }
-                                    }
-                                }
                                 break;
                             default:
                                 // Only for boss
