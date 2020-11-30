@@ -5,7 +5,6 @@ import com.company.persons.Person;
 public class Employee extends Person {
     private String password;
     protected boolean editEmployees = false;
-    protected boolean editBuildings = false;
 
     public Employee(String firstName, String secondName, String email, String password) {
         super(firstName, secondName, email);
@@ -22,9 +21,5 @@ public class Employee extends Person {
 
     public boolean canEditEmployees() {
         return editEmployees;
-    }
-
-    public boolean canEditBuildings() {
-        return editBuildings;
     }
 }

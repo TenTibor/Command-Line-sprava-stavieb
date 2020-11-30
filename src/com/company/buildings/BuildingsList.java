@@ -25,7 +25,8 @@ public class BuildingsList implements listInterface {
         }
     }
 
-    public void getList() {
+    public ArrayList<Building> getList() {
+        return list;
     }
 
     public void removeItem(int index){

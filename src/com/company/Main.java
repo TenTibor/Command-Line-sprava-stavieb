@@ -66,7 +66,8 @@ public class Main {
                             (!_auth.isGuest() && _auth.getUser().canEditEmployees() ? "\n4: Add new employee" : "") +
                             ("\n5: Show all customers") +
                             (!_auth.isGuest() ? "\n6: Add new customer" : "") +
-                            ("\n7: Show customer")
+                            ("\n7: Show customer") +
+                            ("\n8: Show all buildings")
                     );
                     System.out.print("What you wanna do? ");
 
@@ -180,6 +181,10 @@ public class Main {
                             }
                         }
                         else thisCustomer.showCard(false);
+                        break;
+                    // Show all buildings
+                    case "8":
+                        customerList.writeBuildingList();
                         break;
                     default:
                         // For only employees

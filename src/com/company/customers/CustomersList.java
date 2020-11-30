@@ -1,5 +1,6 @@
 package com.company.customers;
 
+import com.company.buildings.Building;
 import com.company.employees.Employee;
 import com.company.listInterface;
 
@@ -53,5 +54,14 @@ public class CustomersList implements listInterface {
 
         list.add(new Customer(name[0], name[1], email));
         System.out.println(name[0] + " " + name[1] + " was added");
+    }
+
+    public void writeBuildingList() {
+        System.out.println("=========================\nList of all buildings:");
+        for (Customer customer : list) {
+            for (Building building : customer.getBuildings()) {
+                System.out.println(building.getRecord() + ", " + customer.getName() + (building.note.isEmpty() ? "" : ", " + building.note.getText()));
+            }
+        }
     }
 }

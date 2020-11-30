@@ -6,6 +6,7 @@ import com.company.buildings.BuildingsList;
 import com.company.employees.Employee;
 import com.company.persons.Person;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Customer extends Person {
@@ -44,6 +45,11 @@ public class Customer extends Person {
         System.out.println("");
         if (havePermissions)
             System.out.println("[A: Add building] [R: Remove customer] [Index of building] \n[N: " + (note.isEmpty() ? "Add" : "Change") + " note] [RN: Remove note] [0: Exit]");
+    }
+
+
+    public ArrayList<Building> getBuildings() {
+        return buildings.getList();
     }
 
     public Building getBuilding(int index) {
