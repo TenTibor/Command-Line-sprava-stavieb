@@ -21,7 +21,7 @@ public class BuildingsList implements listInterface {
         System.out.println(" Buildings(" + getSize() + "): ");
         int index = 1;
         for (Building item : list) {
-            System.out.println("  " + (index++) + ": " + item.getRecord());
+            System.out.println("  " + (index++) + ": " + item.getRecord() + (item.note.isEmpty() ? "" : ", " + item.note.getText()));
         }
     }
 

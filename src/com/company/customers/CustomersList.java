@@ -21,7 +21,7 @@ public class CustomersList implements listInterface {
         System.out.println("=========================\nList of all customers:");
         int index = 1;
         for (Customer item : list) {
-            System.out.println((index++) + ": " + item.getPerson());
+            System.out.println((index++) + ": " + item.getPerson() + ", " + item.buildings.getSize() + " buildings" + (item.note.isEmpty() ? "" : ", " + item.note.getText()));
         }
     }
 
