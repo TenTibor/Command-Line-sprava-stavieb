@@ -11,7 +11,8 @@ import java.util.Scanner;
 
 public class Main {
     final static String exitInput = "0";
-    static void whoIsBoss(){
+
+    static void whoIsBoss() {
         System.out.println("You are!");
     }
 
@@ -20,7 +21,7 @@ public class Main {
         EmployeesList employeesList = new EmployeesList();
 
         // UPCASTING is here
-        Employee randomEmployee = new Boss("Tibor", "Dulovec", "1", "1");
+        Employee randomEmployee = new Boss("Tibor", "Dulovec", "tibor@mail.com", "123456");
         employeesList.addEmployee(randomEmployee);
         randomEmployee = new Employee("Tibor", "Dulovec", "2", "2");
         employeesList.addEmployee(randomEmployee);
@@ -43,7 +44,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Authentication _auth = new Authentication(employeesList);
         String response = "";
-        System.out.println("===================\nWelcome to system!\n===================");
+        System.out.println("====================\n Welcome to system!\n====================");
         boolean showMenu = true;
         while (!response.equals(exitInput)) {
             if (!_auth.isLoggedIn()) {
@@ -71,7 +72,8 @@ public class Main {
                             ("\n5: Show all customers") +
                             (!_auth.isGuest() ? "\n6: Add new customer" : "") +
                             ("\n7: Show customer") +
-                            ("\n8: Show all buildings")
+                            ("\n8: Show all buildings") +
+                            ("\n9: Search customer")
                     );
                     System.out.print("What you wanna do? ");
 
@@ -189,6 +191,10 @@ public class Main {
                     // Show all buildings
                     case "8":
                         customerList.writeBuildingList();
+                        break;
+                    case "9":
+                        System.out.print("Name of customer: ");
+                        customerList.showCustomer(scanner.nextLine());
                         break;
                     default:
                         // For only employees

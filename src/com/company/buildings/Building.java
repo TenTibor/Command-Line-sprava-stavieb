@@ -1,8 +1,6 @@
 package com.company.buildings;
 
-import com.company.customers.Customer;
 import com.company.Note;
-import com.company.employees.Employee;
 
 import java.util.ArrayList;
 

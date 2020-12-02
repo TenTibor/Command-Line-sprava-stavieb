@@ -1,7 +1,6 @@
 package com.company.customers;
 
 import com.company.buildings.Building;
-import com.company.employees.Employee;
 import com.company.listInterface;
 
 import java.util.ArrayList;
@@ -63,5 +62,15 @@ public class CustomersList implements listInterface {
                 System.out.println(building.getRecord() + ", " + customer.getName() + (building.note.isEmpty() ? "" : ", " + building.note.getText()));
             }
         }
+    }
+
+    public void showCustomer(String findThis) {
+        for (Customer customer : list) {
+            if (findThis.equals(customer.getName()) || findThis.equals(customer.getEmail())) {
+                customer.showCard(false);
+                return;
+            }
+        }
+        System.out.println("Customer wasn't found");
     }
 }
