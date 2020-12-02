@@ -10,6 +10,10 @@ import com.company.employees.EmployeesList;
 import java.util.Scanner;
 
 public class Main {
+    final static String exitInput = "0";
+    static void whoIsBoss(){
+        System.out.println("You are!");
+    }
 
     public static void main(String[] args) {
         // employees
@@ -41,7 +45,7 @@ public class Main {
         String response = "";
         System.out.println("===================\nWelcome to system!\n===================");
         boolean showMenu = true;
-        while (!response.equals("0")) {
+        while (!response.equals(exitInput)) {
             if (!_auth.isLoggedIn()) {
                 // Login
                 System.out.println("Log in as:");
@@ -104,7 +108,7 @@ public class Main {
 
                         // Menu for customer
                         String customerResponse = "";
-                        if (!_auth.isGuest()) while (!customerResponse.equals("0")) {
+                        if (!_auth.isGuest()) while (!customerResponse.equals(exitInput)) {
                             // Show card
                             thisCustomer.showCard(true);
                             customerResponse = scanner.nextLine();
@@ -125,7 +129,7 @@ public class Main {
 
                                 // Menu for building
                                 String buildingResponse = "";
-                                while (!buildingResponse.equals("0")) {
+                                while (!buildingResponse.equals(exitInput)) {
                                     // Show card
                                     thisBuilding.showCard();
                                     buildingResponse = scanner.nextLine();
@@ -134,15 +138,15 @@ public class Main {
                                         case "R":
                                             thisCustomer.removeBuilding(indexBuilding - 1);
                                             System.out.println("Building was removed!");
-                                            buildingResponse = "0";
+                                            buildingResponse = exitInput;
                                             break;
                                         case "F":
                                             thisBuilding.finish();
-                                            buildingResponse = "0";
+                                            buildingResponse = exitInput;
                                             break;
                                         case "C":
                                             thisBuilding.cancel();
-                                            buildingResponse = "0";
+                                            buildingResponse = exitInput;
                                             break;
                                         case "W":
                                             System.out.print("Name of new worker: ");
@@ -166,7 +170,7 @@ public class Main {
                                     case "R":
                                         customerList.removeItem(Integer.parseInt(sIndex) - 1);
                                         System.out.println("Customer was removed!");
-                                        customerResponse = "0";
+                                        customerResponse = exitInput;
                                         showMenu = true;
                                         break;
                                     case "N":
@@ -211,6 +215,10 @@ public class Main {
                                     // Add employee
                                     case "4":
                                         employeesList.addEmployeeInterface();
+                                        break;
+                                    // Who is boss? -- Ano, dochadzali mi napady
+                                    case "who is boss":
+                                        whoIsBoss();
                                         break;
                                 }
                                 break;

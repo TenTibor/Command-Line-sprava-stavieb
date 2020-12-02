@@ -17,7 +17,7 @@ public class Building {
         this.place = place;
     }
 
-    public void addWorker(String name) {
+    public final void addWorker(String name) {
         workers.add(name);
     }
 

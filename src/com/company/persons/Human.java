@@ -1,11 +1,9 @@
 package com.company.persons;
 
 public abstract class Human {
-    public String getName() {
-        return null;
-    }
+    public abstract String getName();
 
-    public void speak() {
-        System.out.println("Rozpravam");
+    public void exist() {
+        System.out.println("Yes, I exist");
     }
 }
