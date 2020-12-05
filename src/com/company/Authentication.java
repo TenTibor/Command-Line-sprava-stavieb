@@ -2,7 +2,6 @@ package com.company;
 
 import com.company.employees.Employee;
 import com.company.employees.EmployeesList;
-import com.company.persons.Guest;
 
 import java.util.Scanner;
 
