@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.authentication.Authentication;
 import com.company.buildings.Building;
 import com.company.customers.Customer;
 import com.company.customers.CustomersList;
@@ -40,12 +41,12 @@ public class Main {
 
         // start interface
         Scanner scanner = new Scanner(System.in);
-        Authentication _auth = new Authentication(employeesList);
+        Authentication auth = new Authentication(employeesList);
         String response = "";
         System.out.println("====================\n Welcome to system!\n====================");
         boolean showMenu = true;
         while (!response.equals(exitInput)) {
-            if (!_auth.isLoggedIn()) {
+            if (!auth.isLoggedIn()) {
                 // Login
                 System.out.println("Log in as:");
                 System.out.println("0: Exit\n1: Employee\n2: Guest");
@@ -53,10 +54,10 @@ public class Main {
                 showMenu = true;
                 switch (response) {
                     case "1":
-                        _auth.logIn();
+                        auth.logIn();
                         break;
                     case "2":
-                        _auth.logAsGuest();
+                        auth.logAsGuest();
                         break;
                 }
             } else {
@@ -64,11 +65,11 @@ public class Main {
                 if (showMenu) {
                     System.out.println("================");
                     System.out.println("0: Exit\n1: Log out" +
-                            (!_auth.isGuest() ? "\n2: Show my profile" : "") +
-                            (!_auth.isGuest() ? "\n3: Show all employees" : "") +
-                            (!_auth.isGuest() && _auth.getUser().canEditEmployees() ? "\n4: Add new employee" : "") +
+                            (!auth.isGuest() ? "\n2: Show my profile" : "") +
+                            (!auth.isGuest() ? "\n3: Show all employees" : "") +
+                            (!auth.isGuest() && auth.getUser().canEditEmployees() ? "\n4: Add new employee" : "") +
                             ("\n5: Show all customers") +
-                            (!_auth.isGuest() ? "\n6: Add new customer" : "") +
+                            (!auth.isGuest() ? "\n6: Add new customer" : "") +
                             ("\n7: Show customer") +
                             ("\n8: Show all buildings") +
                             ("\n9: Search customer")
@@ -87,7 +88,7 @@ public class Main {
                         break;
                     // Log out
                     case "1":
-                        _auth.logOut();
+                        auth.logOut();
                         break;
                     // Show all customers
                     case "5":
@@ -108,7 +109,7 @@ public class Main {
 
                         // Menu for customer
                         String customerResponse = "";
-                        if (!_auth.isGuest()) while (!customerResponse.equals(exitInput)) {
+                        if (!auth.isGuest()) while (!customerResponse.equals(exitInput)) {
                             // Show card
                             thisCustomer.showCard(true);
                             customerResponse = scanner.nextLine();
@@ -196,12 +197,12 @@ public class Main {
                         break;
                     default:
                         // For only employees
-                        if (!_auth.isGuest()) switch (response) {
+                        if (!auth.isGuest()) switch (response) {
                             // Show profile of logged employees
                             case "2":
                                 System.out.println("Your profile:");
-                                System.out.println(_auth.getUser().getName());
-                                System.out.println(_auth.getUser().getEmail());
+                                System.out.println(auth.getUser().getName());
+                                System.out.println(auth.getUser().getEmail());
                                 System.out.println("Press number to do action. (Press m to show menu)");
                                 break;
                             // Show all employees
@@ -215,7 +216,7 @@ public class Main {
                                 break;
                             default:
                                 // Only for boss
-                                if (_auth.getUser().canEditEmployees()) switch (response) {
+                                if (auth.getUser().canEditEmployees()) switch (response) {
                                     // Add employee
                                     case "4":
                                         employeesList.addEmployeeInterface();

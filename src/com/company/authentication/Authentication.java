@@ -1,4 +1,4 @@
-package com.company;
+package com.company.authentication;
 
 import com.company.employees.Employee;
 import com.company.employees.EmployeesList;
@@ -18,12 +18,12 @@ public class Authentication {
         return typedPassword.equals(employee.getPassword());
     }
 
-    void logAsGuest() {
+    public void logAsGuest() {
         System.out.println("Logged in as guest.");
         this.guest = new Guest();
     }
 
-    void logIn() {
+    public void logIn() {
         System.out.println("Login with email: ");
 
         Scanner scanner = new Scanner(System.in);
@@ -57,7 +57,7 @@ public class Authentication {
         this.user = theEmployee;
     }
 
-    void logOut() {
+    public void logOut() {
         this.user = null;
         this.guest = null;
         System.out.println("You are logged out\n==================");
