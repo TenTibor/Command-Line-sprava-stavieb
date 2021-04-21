@@ -1,6 +1,6 @@
-package com.company.buildings;
+package buildings;
 
-import com.company.Note;
+import others.Note;
 
 import java.util.ArrayList;
 
@@ -34,7 +34,7 @@ public class Building {
     public void showCard() {
         System.out.println("\n=============" + status + "=============");
         System.out.println(" Place: " + place);
-        if (!note.isEmpty()) System.out.println(" Note: " + note.getText());
+        if (!note.isEmpty()) System.out.println(" others.Note: " + note.getText());
         if (!workers.isEmpty()) {
             System.out.println(" Workers: ");
             for (String worker : workers) {

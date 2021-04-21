@@ -1,4 +1,4 @@
-package com.company.employees;
+package employees;
 
 public class Boss extends Employee {
 

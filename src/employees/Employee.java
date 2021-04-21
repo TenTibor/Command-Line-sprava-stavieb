@@ -1,6 +1,6 @@
-package com.company.employees;
+package employees;
 
-import com.company.persons.Person;
+import persons.Person;
 
 public class Employee extends Person {
     private String password;

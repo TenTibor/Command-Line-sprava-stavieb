@@ -1,4 +1,4 @@
-package com.company.persons;
+package persons;
 
 public class Person extends Human{
     private String firstName;

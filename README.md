@@ -1,2 +1,0 @@
-# ZOOP
-ZOOP, school project

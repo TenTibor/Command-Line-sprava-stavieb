@@ -1,8 +1,6 @@
-package com.company.buildings;
+package buildings;
 
-import com.company.customers.Customer;
-import com.company.employees.Employee;
-import com.company.listInterface;
+import others.listInterface;
 
 import java.util.ArrayList;
 

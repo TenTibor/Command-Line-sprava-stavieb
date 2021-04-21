@@ -1,7 +1,7 @@
-package com.company.authentication;
+package authentication;
 
-import com.company.employees.Employee;
-import com.company.employees.EmployeesList;
+import employees.Employee;
+import employees.EmployeesList;
 
 import java.util.Scanner;
 

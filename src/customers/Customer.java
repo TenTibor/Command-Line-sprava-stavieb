@@ -1,10 +1,9 @@
-package com.company.customers;
+package customers;
 
-import com.company.Note;
-import com.company.buildings.Building;
-import com.company.buildings.BuildingsList;
-import com.company.employees.Employee;
-import com.company.persons.Person;
+import others.Note;
+import buildings.Building;
+import buildings.BuildingsList;
+import persons.Person;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -33,7 +32,7 @@ public class Customer extends Person {
     public void showCard(boolean actionsMenu) {
         System.out.println("\n=============" + this.getName() + "=============");
         System.out.println(" Email: " + this.getEmail());
-        if (!note.isEmpty()) System.out.println(" Note: " + note.getText());
+        if (!note.isEmpty()) System.out.println(" others.Note: " + note.getText());
 
         //  Building of user
         this.writeBuildingsList();

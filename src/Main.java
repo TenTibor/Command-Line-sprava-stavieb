@@ -1,12 +1,10 @@
-package com.company;
-
-import com.company.authentication.Authentication;
-import com.company.buildings.Building;
-import com.company.customers.Customer;
-import com.company.customers.CustomersList;
-import com.company.employees.Boss;
-import com.company.employees.Employee;
-import com.company.employees.EmployeesList;
+import authentication.Authentication;
+import buildings.Building;
+import customers.Customer;
+import customers.CustomersList;
+import employees.Boss;
+import employees.Employee;
+import employees.EmployeesList;
 
 import java.util.Scanner;
 
@@ -159,7 +157,7 @@ public class Main {
                                             break;
                                         case "RN":
                                             thisBuilding.note.removeNote();
-                                            System.out.println("Note was removed");
+                                            System.out.println("others.Note was removed");
                                             break;
                                     }
                                 }
@@ -180,7 +178,7 @@ public class Main {
                                         break;
                                     case "RN":
                                         thisCustomer.note.removeNote();
-                                        System.out.println("Note was removed");
+                                        System.out.println("others.Note was removed");
                                         break;
                                 }
                             }

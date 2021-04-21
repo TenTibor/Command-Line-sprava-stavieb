@@ -1,4 +1,4 @@
-package com.company.persons;
+package persons;
 
 public abstract class Human {
     public abstract String getName();

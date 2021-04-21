@@ -1,7 +1,7 @@
-package com.company.customers;
+package customers;
 
-import com.company.buildings.Building;
-import com.company.listInterface;
+import buildings.Building;
+import others.listInterface;
 
 import java.util.ArrayList;
 import java.util.Scanner;

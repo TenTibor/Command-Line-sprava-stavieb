@@ -1,4 +1,4 @@
-package com.company;
+package others;
 
 public interface listInterface {
     void removeItem(int index);

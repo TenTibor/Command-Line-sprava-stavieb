@@ -1,6 +1,6 @@
-package com.company.employees;
+package employees;
 
-import com.company.listInterface;
+import others.listInterface;
 
 import java.util.ArrayList;
 import java.util.Scanner;

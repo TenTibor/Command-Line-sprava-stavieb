@@ -1,6 +1,6 @@
-package com.company;
+package others;
 
-// Note about building or customer from employees
+// others.Note about building or customer from employees
 public class Note {
     String text = "";
 
